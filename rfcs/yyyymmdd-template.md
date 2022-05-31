@@ -18,7 +18,6 @@ outcome?
 > The core of proposal. How does it work? What are the pros/cons? What alternatives
 > where are there and why this solution over them?
 
-
 ## Implementation
 
 > How should this be implemented in the automated tool for validating the rules?
