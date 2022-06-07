@@ -31,3 +31,23 @@ type user {
     dayOfBirth: Date!
 }
 ```
+
+## Suffix input type with `Input` ![linting](https://img.shields.io/badge/linting-missing-red)
+All input types **MUST** be suffixed with `Input`
+
+When creating an input type node, the name should always be suffixed with `Input`.
+
+> ❌ Invalid
+```graphql
+input Review {
+  stars: Int!
+  commentary: String
+}
+```
+> ✅ Valid
+```graphql
+input ReviewInput {
+  stars: Int!
+  commentary: String
+}
+```
