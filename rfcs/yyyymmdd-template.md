@@ -16,7 +16,7 @@ outcome?
 ## Design Proposal
 
 > The core of proposal. How does it work? What are the pros/cons? What alternatives
-> where are there and why this solution over them?
+> where there and why this solution over them?
 
 ## Implementation
 
