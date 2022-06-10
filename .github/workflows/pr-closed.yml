@@ -26,12 +26,23 @@ jobs:
         with:
           files: 'rfcs/*.md'
 
+      - id: rfc-id
+        name: View context attributes
+        uses: actions/github-script@7a5c598405937d486b0331594b5da2b14db670da
+        with:
+          script: |
+            let file = '${{ steps.changed-files.outputs.added_files }}';
+            return file
+                     .trim()
+                     .replace(/^rfcs\//, '')
+                     .replace(/\.md$/, '');
+
       - id: create-issue
         name: Open issue
         uses: JasonEtco/create-an-issue@c796bdce77b0eebb39e2f4cb359893d764d4aa91 # https://github.com/JasonEtco/create-an-issue
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          RFC_ID: ${{ steps.changed-files.outputs.added_files.replace(/^rfcs\//, '').replace(/\.md$/, '') }}
+          RFC_ID: ${{ steps.rfc-id.outputs.result }}
         with:
           assignees: '@worksome/platform-core'
           filename: '.github/resources/implement-rfc-template.md'
