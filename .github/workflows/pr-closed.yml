@@ -1,0 +1,42 @@
+name: PR Closed
+
+on:
+  pull_request:
+    types:
+      - closed
+    paths:
+      - 'rfcs/**.md'
+
+jobs:
+  merge_pr_open_issue:
+    name: Open RFC Issue
+
+    if: github.event.pull_request.merged == true && github.event.pull_request.additions == 1 && github.event.pull_request.modified == 1
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      issues: write
+
+    steps:
+
+      - name: Get changed files
+        id: changed-files
+        uses: tj-actions/changed-files@b417139777088113e69aa067954642109fffdf05 # https://github.com/tj-actions/changed-files
+        with:
+          files: 'rfcs/*.md'
+
+      - id: create-issue
+        name: Open issue
+        uses: JasonEtco/create-an-issue@c796bdce77b0eebb39e2f4cb359893d764d4aa91 # https://github.com/JasonEtco/create-an-issue
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          RFC_ID: ${{ steps.changed-files.outputs.added_files.replace(/^rfcs\//, '').replace(/\.md$/, '') }}
+        with:
+          assignees: '@worksome/platform-core'
+          filename: '.github/resources/implement-rfc-template.md'
+
+      - name: Output issue details
+        run: |
+          echo Created issue #${{ steps.create-issue.outputs.number }}
+          echo ${{ steps.create-issue.outputs.url }}
