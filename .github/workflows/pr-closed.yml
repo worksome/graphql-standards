@@ -4,19 +4,13 @@ on:
   pull_request:
     types:
       - closed
-    paths:
-      - 'rfcs/**.md'
 
 jobs:
   merge_pr_open_issue:
     name: Open RFC Issue
 
-    if: github.event.pull_request.merged == true && github.event.pull_request.additions == 1 && github.event.pull_request.modified == 1
+    if: github.event.pull_request.merged == true && startsWith(github.event.pull_request.title, '[RFC] ')
     runs-on: ubuntu-latest
-
-    permissions:
-      contents: read
-      issues: write
 
     steps:
 
