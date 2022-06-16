@@ -52,7 +52,7 @@ input ReviewInput {
 }
 ```
 
-## Description required for all nodes ![linting](https://img.shields.io/badge/linting-auto-blue)
+## Description required for all nodes ![linting](https://img.shields.io/badge/linting-checks-blue)
 All nodes (arguments, fields, queries, types, etc.) **MUST** have a description.
 
 When a new node of any type is created a description shall be available for it.
