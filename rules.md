@@ -107,9 +107,10 @@ type User {
 ```
 
 ## Lists are non-nullable ![linting](https://img.shields.io/badge/linting-auto-blue)
-All fields with a list value **MUST** be non-nullable.
+All fields with a list value **MUST** be non-nullable when field definition is output type.
 
-When declaring a list field, the value **MUST** always be a list (either empty, or populated).
+When declaring a list field, the value **MUST** always be a list (either empty, or populated) on [output types](http://spec.graphql.org/draft/#sec-Input-and-Output-Types).  
+It is allowed to have list fields on `input` types which are nullable.
 
 > ❌ Invalid
 ```graphql
@@ -129,6 +130,10 @@ type Company {
     The use of non-nullable enforcement means that the value will only ever be `[]` or a populated list.
     """
     invoices: [Invoice!]!
+}
+
+input CompanyInput {
+    owners: [String!]
 }
 ```
 
