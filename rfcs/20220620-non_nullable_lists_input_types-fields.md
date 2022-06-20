@@ -4,7 +4,7 @@
 
 > One paragraph explanation of the change.
 
-All output types **MUST** have non-nullable lists fields
+All output types **MUST** have non-nullable lists fields.
 
 ## Motivation
 
@@ -12,13 +12,13 @@ All output types **MUST** have non-nullable lists fields
 outcome?
 
 Sometimes users would like to not supply a list when doing input objects.  
-However as the rules enforces all list to be non-nullable, this is not possible
+However as the rules enforces all list to be non-nullable, this is not possible.
 
 ## User impact
 
 > Is the impact on users major? How will they benefit from this proposal?
 
-None. There are no breaking changes, it's only loosening the current rules
+None. There are no breaking changes, it's only loosening the current rules.
 
 ## Design Proposal
 
@@ -26,7 +26,7 @@ None. There are no breaking changes, it's only loosening the current rules
 > where there and why this solution over them?
 
 When creating a list, it can be nullable if it is not an output type.  
-Output type is defined as per graphql spec http://spec.graphql.org/draft/#sec-Input-and-Output-Types.
+Output type is defined as per GraphQL spec https://spec.graphql.org/draft/#sec-Input-and-Output-Types.
 
 Essentially this means that all lists which are on an `input` object are allowed to be null, however not
 enforced to be null. The following is now valid.
