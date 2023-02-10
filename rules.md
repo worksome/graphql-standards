@@ -213,3 +213,27 @@ type userInvoice {
 type UserInvoice {
 }
 ```
+
+## `UPPER_SNAKE` enum cases ![linting](https://img.shields.io/badge/linting-auto-blue)
+
+All enum cases **MUST** use upper snake case.
+
+> ❌ Invalid
+
+```graphql
+enum Status {
+    case Active
+    case fulfilled
+    case in_progress
+}
+```
+
+> ✅ Valid
+
+```graphql
+enum Status {
+    case ACTIVE
+    case FULFILLED
+    case IN_PROGRESS
+}
+```
